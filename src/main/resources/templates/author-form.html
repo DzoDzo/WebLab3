@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form method="post" th:action="@{${author == null ? '/authors/add' : '/authors/edit/' + author.id}}">
+
+    <div class="form-group">
+        <label for="name">Author name</label>
+        <input type="text"
+               class="form-control"
+               id="name"
+               name="name"
+               th:value="${author != null ? author.getName() : ''}"
+               required
+               placeholder="Enter author Name">
+    </div>
+    <div class="form-group">
+        <label for="price">Surname</label>
+        <input type="text"
+               class="form-control"
+               id="price"
+               name="surname"
+               th:value="${author?.getSurname()}"
+               placeholder="Enter author surname">
+    </div>
+    <div class="form-group">
+        <label for="quantity">Quantity</label>
+        <input type="text"
+               class="form-control"
+               id="quantity"
+               name="biography"
+               th:value="${author?.getBiography()}"
+               placeholder="Enter author biography">
+    </div>
+    <div class="form-group">
+        <label>Product Level</label>
+        <select name="agegroup" class="form-control">
+            <option th:each="ag: ${agegroups}"
+                    th:text="${ag}"
+                    th:value="${ag}"
+                    th:selected="${author != null ? author?.getAgegroup() == ag : false}"
+            >
+            </option>
+        </select>
+    </div>
+    </div>
+    <button id="submit" type="submit" class="btn btn-primary">Submit</button>
+    <a type="button" class="btn btn-primary" href="/products">Back</a>
+</form>
+
+</body>
+</html>
