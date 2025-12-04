@@ -12,5 +12,5 @@ public interface AuthorService {
     Author findAuthorById(Long id);
     Author update(Long authorId, String name, String surname, String biography, AGEGROUP agegroup);
     Author create(String name, String surname, String biography, AGEGROUP agegroup);
-    Author delete(Long id);
+    void delete(Long id);
 }

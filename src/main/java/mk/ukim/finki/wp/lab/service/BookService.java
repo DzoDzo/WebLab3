@@ -9,8 +9,9 @@ import java.util.List;
 public interface BookService {
     List<Book> listAll();
     List<Book> searchBooks(String text, Double rating);
+    List<Book> booksByAuthor(String author);
     Book getBookById(Long id);
     Book update(Long bookId, String title, String genre, Double averageRating, Long authorId);
     Book create(String title, String genre, Double averageRating, Long authorId);
-    Book delete(Long bookId);
+    void delete(Long bookId);
 }

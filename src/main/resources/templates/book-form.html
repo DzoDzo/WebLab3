@@ -39,9 +39,9 @@
         <label>Product Level</label>
         <select name="authorId" class="form-control">
             <option th:each="author : ${authors}"
-                    th:text="${author}"
-                    th:value="${author}"
-                    th:selected="${author != null ? author?.getAgegroup() == author.getAgegroup() : false}"
+                    th:text="${author.name}"
+                    th:value="${author.id}"
+                    th:selected="${author != null ? author?.name == author.name : false}"
             >
             </option>
         </select>

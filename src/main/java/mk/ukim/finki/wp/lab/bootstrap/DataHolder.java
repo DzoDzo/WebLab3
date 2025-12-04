@@ -23,12 +23,12 @@ public class DataHolder {
         reservations = new ArrayList<>();
         authors = new ArrayList<>();
 
-        authors.add(new Author("Filip", "Karamachoski", "Jas sum od struga", AGEGROUP.mlad));
-        authors.add(new Author("Damjan", "Zimbakov", "Jas sum od strumica", AGEGROUP.mlad));
-        authors.add(new Author("Andrej", "Milevski", "Jas sum od bitola", AGEGROUP.mlad));
+        authors.add(new Author("ad", "d", "a", AGEGROUP.mlad));
+        authors.add(new Author("Damjan", "Zimbakov", "b", AGEGROUP.mlad));
+        authors.add(new Author("k", "l", "Jc", AGEGROUP.mlad));
 
-        books.add(new Book("Lord of the Rings", "Fantasy", 4.3, authors.get(0)));
-        books.add(new Book("Dune", "Sci-fi", 5.0, authors.get(2)));
+        books.add(new Book("Lytyt", "yt", 4.3, authors.get(0)));
+        books.add(new Book("yt", "Sci-ytfi", 5.0, authors.get(2)));
 
     }
 }

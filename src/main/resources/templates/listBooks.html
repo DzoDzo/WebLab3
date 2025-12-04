@@ -31,7 +31,58 @@
     <h1>Welcome to our Book Reservation App</h1>
 </header>
 <main>
-        <ul th:if="${books.size() > 0}">
+    <form method="get" th:action="@{/books}">
+        <label for="authorSearch">Navedete Avtor</label>
+        <input type="text" id="authorSearch" name="author" th:value="${authorSearch}">
+        <button type="submit">Search</button>
+    </form>
+<!--    <form method="post" th:action="@{${book == null ? '/books/add' : '/books/edit/' + book.id}}">-->
+
+<!--        <div class="form-group">-->
+<!--            <label for="name">Product name</label>-->
+<!--            <input type="text"-->
+<!--                   class="form-control"-->
+<!--                   id="name"-->
+<!--                   name="title"-->
+<!--                   th:value="${book != null ? book.getTitle() : ''}"-->
+<!--                   required-->
+<!--                   placeholder="Enter book Title">-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <label for="price">Price</label>-->
+<!--            <input type="text"-->
+<!--                   class="form-control"-->
+<!--                   id="price"-->
+<!--                   name="genre"-->
+<!--                   th:value="${book?.getGenre()}"-->
+<!--                   placeholder="Enter book genre">-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <label for="quantity">Quantity</label>-->
+<!--            <input type="number"-->
+<!--                   class="form-control"-->
+<!--                   id="quantity"-->
+<!--                   name="averageRating"-->
+<!--                   th:value="${book?.getAverageRating()}"-->
+<!--                   placeholder="Enter average rating">-->
+<!--        </div>-->
+<!--        <div class="form-group">-->
+<!--            <label>Author Level</label>-->
+<!--            <select name="authorId" class="form-control">-->
+<!--                <option th:each="author : ${authors}"-->
+<!--                        th:text="${author.name}"-->
+<!--                        th:value="${author.id}"-->
+<!--                        th:selected="${author != null ? author?.getName() == author.getName() : false}"-->
+<!--                >-->
+<!--                </option>-->
+<!--            </select>-->
+<!--        </div>-->
+<!--        </div>-->
+<!--        <button id="submit" type="submit" class="btn btn-primary">Submit</button>-->
+<!--        <a type="button" class="btn btn-primary" href="/products">Back</a>-->
+<!--    </form>-->
+    <a th:href="@{'/books/add'}    ">Add Book</a>
+    <ul th:if="${books.size() > 0}">
             <li>
                 <div th:each="book : ${books}">
                     <p th:text="${book.getTitle()}"></p>

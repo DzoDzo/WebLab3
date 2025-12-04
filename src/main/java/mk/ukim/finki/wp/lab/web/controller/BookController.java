@@ -59,9 +59,19 @@ public class BookController {
     @GetMapping("")
     public String getBooksPage(
             @RequestParam(required = false) String error,
+            @RequestParam(required = false) String author,
             Model model
     ){
-        model.addAttribute("books", bookService.listAll());
+        if(author!=null){
+            model.addAttribute("books", bookService.booksByAuthor(author));
+            model.addAttribute("authorSearch", author);
+
+        }
+        else{
+            model.addAttribute("books", bookService.listAll());
+        }
+        model.addAttribute("authors", authorService.findAll());
+
         return "listBooks";
     }
 

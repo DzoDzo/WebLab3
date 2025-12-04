@@ -14,6 +14,9 @@ public class AuthorServiceImpl implements AuthorService {
 
     public AuthorServiceImpl(AuthorRepository authorRepository) {
         this.authorRepository = authorRepository;
+        this.authorRepository.save(new Author("Vasil","Levski","Geroj",AGEGROUP.star));
+        this.authorRepository.save(new Author("Dimitar","Miladinov","Gerojishche",AGEGROUP.star));
+        this.authorRepository.save(new Author("pero","pero","pero",AGEGROUP.mlad));
     }
 
     @Override
@@ -23,21 +26,22 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public Author findAuthorById(Long id) {
-        return authorRepository.findAuthorById(id);
+        return authorRepository.findById(id).orElseThrow();
     }
 
     @Override
     public Author update(Long authorId, String name, String surname, String biography, AGEGROUP agegroup) {
-        return authorRepository.update(authorId, name, surname, biography, agegroup);
+        Author author = authorRepository.findById(authorId).orElseThrow();
+        return authorRepository.save(author);
     }
 
     @Override
     public Author create(String name, String surname, String biography, AGEGROUP agegroup) {
-        return authorRepository.create(name, surname, biography, agegroup);
+        return authorRepository.save(new Author(name, surname, biography, agegroup));
     }
 
     @Override
-    public Author delete(Long id) {
-        return authorRepository.delete(id);
+    public void delete(Long id) {
+         authorRepository.deleteById(id);
     }
 }
